@@ -1,0 +1,33 @@
+<div class="container mt-1">
+    <h3 class="heading"> Tag Deatils: {{name}}</h3>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name*:</label>
+            <input type="text" id="name" class="form-control" formControlName="name" [(ngModel)]="name">
+            <div *ngIf="myForm.get('name')?.hasError('required') && myForm.get('name')?.touched" class="text-danger">
+                Name is required.
+            </div>
+        </div>
+
+        <div class="form-group submit-button">
+            <label for="address">Address*:</label>
+            <textarea id="address" class="form-control" formControlName="address"></textarea>
+            <div *ngIf="myForm.get('address')?.hasError('required') && myForm.get('address')?.touched"
+                class="text-danger">
+                Address is required.
+            </div>
+        </div>
+
+        <div class="form-group submit-button">
+            <label for="pincode">PIN*:</label>
+            <input type="text" id="name" class="form-control" formControlName="pincode">
+            <div *ngIf="myForm.get('pincode')?.hasError('required') && myForm.get('pincode')?.touched"
+                class="text-danger">
+                Pincode is required.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary submit-button right-aligned">Submit</button>
+        <button type="submit" class="btn btn-danger submit-button right-aligned cancel-button"
+            (click)="dashboard()">Cancel</button>
+    </form>
+</div>
